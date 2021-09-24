@@ -63,6 +63,6 @@ def main(idx):
     print('AUC:{} '.format(model.get_performance(X_te,y_te,X_cal,y_cal)['AUC']))
 
 if __name__ == '__main__':
-    idxs = [0,1,2]
+    idxs = [2]
     for idx in idxs:
         main(idx)
