@@ -1,0 +1,28 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: m1 
+spec:
+  template:
+    spec:
+      containers:
+        - name: m1
+          image: "rogelioandrade/theano_setup:v4"
+          workingDir: /mnt/azure/reject_inference/python/model1
+          command: ["bash","./run_jobs.sh"]
+          volumeMounts:
+          -  name: azure 
+             mountPath: /mnt/azure     
+      nodeSelector:
+        nvidia2/gpu: "true"
+      tolerations:
+        - key: "nvidia.com/gpu"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule" 
+      volumes:
+        - name: azure 
+          persistentVolumeClaim:
+            claimName: azurefile
+      restartPolicy: OnFailure
+  backoffLimit: 0

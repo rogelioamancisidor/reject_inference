@@ -1,0 +1,3 @@
+# ignore files
+python/model1/*.pyc
+python/model2/*.pyc

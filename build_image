@@ -1,0 +1,1 @@
+docker run --rm --interactive --tty --volume="${PWD}/python:/root/python"  --volume="${PWD}/output:/root/output" --volume="${PWD}/data:/root/data" -w /root/ rogelioandrade/theano_setup:v4 /bin/bash
